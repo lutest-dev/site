@@ -1,6 +1,6 @@
 # Lutest site
 
-Documentation site for [Lutest](https://github.com/cayasde/lutest), built with
+Documentation site for [Lutest](https://github.com/lutest-dev/lutest), built with
 Astro and Starlight.
 
 ## Development

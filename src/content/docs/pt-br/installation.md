@@ -10,7 +10,7 @@ Adicione o Lutest no seu `mise.toml` local:
 
 ```toml
 [tools]
-"github:cayasde/lutest" = "latest"
+"github:lutest-dev/lutest" = "latest"
 ```
 
 Depois instale a tool:
@@ -30,7 +30,7 @@ lutest help
 Se você usa Rokit, adicione o Lutest com:
 
 ```sh
-rokit add cayasde/lutest
+rokit add lutest-dev/lutest
 ```
 
 Depois confirme a instalação:
@@ -69,7 +69,7 @@ return {
 				name = "lutest",
 				rev = "v0.4.0",
 				sourceKind = "github",
-				source = "https://github.com/cayasde/lutest",
+				source = "https://github.com/lutest-dev/lutest",
 			},
 		},
 	},

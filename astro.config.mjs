@@ -8,7 +8,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Lutest',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/cayasde/lutest' }],
+			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/lutest-dev/lutest' }],
 			locales: {
 				root: {
 					label: 'English',
