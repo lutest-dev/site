@@ -1,0 +1,3 @@
+[submodule "lutest"]
+	path = lutest
+	url = https://github.com/lutest-dev/lutest.git
