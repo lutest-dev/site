@@ -12,7 +12,7 @@ export default defineConfig({
 				src: './assets/logo.png',
 				alt: 'Lutest',
 			},
-			favicon: '/logo.png',
+			favicon: '/logo.png?v=2',
 			customCss: ['./src/styles/lutest.css'],
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/lutest-dev/lutest' }],
 			locales: {
