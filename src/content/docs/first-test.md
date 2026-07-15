@@ -7,11 +7,9 @@ This page gets a single test running.
 Start with a minimal `lutest.toml`:
 
 ```toml
-[discovery]
+[discovery.lute]
 require = "@lib"
 roots = ["."]
-ignore = ["vendor", "luau_packages", ".git"]
-gitignore = true
 ```
 
 Now create a module that registers one test:
@@ -41,3 +39,13 @@ lutest test src
 ```
 
 At this point, the important idea is small: Lutest looks for modules that depend on the configured package path, loads them, and turns each discovered module into one implicit suite.
+
+## How discovery works
+
+The configured `require(...)` identifies a test module; its filename does not. This module is discovered:
+
+```luau
+local t = require("@lib")
+```
+
+Naming the file `inventory.spec.luau` alone does not make it a Lutest test. You can still keep separate test files and use any naming convention you prefer, as long as the module requires the configured Lutest package.

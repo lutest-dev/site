@@ -25,13 +25,11 @@ return {
 }
 ```
 
-And a run for that module can look like this:
+And a successful run for that module is deliberately compact:
 
-```text
-$ lutest test .
+<div class="terminal-output" aria-label="Successful Lutest run"><span class="terminal-prompt">$</span> lutest test .
 
-OK  1 total  1 pass  0 fail  0 skip  0 todo
-```
+<span class="terminal-success">+ 1 test passed</span></div>
 
 When you run Lutest, that module is discovered, loaded, and treated as one suite.
 

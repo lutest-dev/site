@@ -2,9 +2,9 @@
 title: Filosofia
 ---
 
-Esta página explica as escolhas por trás do modelo atual.
+Esta página explica as escolhas, a arquitetura, a estabilidade e a direção por trás do modelo atual.
 
-O Lutest fica mais próximo de como testes costumam ser escritos em projetos [Rust](https://rust-lang.org/) do que de um modelo baseado em arquivos de teste separados.
+O Lutest fica mais próximo de como testes costumam ser escritos em projetos [Rust](https://rust-lang.org/) do que de um modelo baseado em arquivos de teste separados. Testes co-located são o formato recomendado, não uma restrição de layout: você pode manter testes em módulos separados quando isso combinar melhor com seu projeto.
 
 ## Por que testes co-located
 
@@ -16,9 +16,9 @@ Helpers internos e comportamento não exportado devem continuar testáveis sem e
 
 ## Por que usar `assert`
 
-O `assert` normal do Luau já resolve uma parte grande do problema.
+O `assert` normal do Luau já resolve uma parte grande do problema, mas não é a única escolha válida.
 
-O Lutest não tenta substituí-lo cedo por uma segunda DSL de assertions.
+O Lutest não acopla o runner a uma segunda DSL de assertions nem a uma API prescrita de tratamento de erros. Isso é um ponto de extensão, não uma limitação: use `assert` puro, traga uma biblioteca de assertions ou use o mecanismo de tratamento de erros que melhor servir ao seu projeto. O Lutest só precisa que um teste passe ou falhe para reportar o resultado.
 
 ## Por que `.spec.luau` não é o contrato principal
 
@@ -47,3 +47,19 @@ Hoje o suporte de runtime do lado do Roblox é baseado em [Luau Execution Sessio
 Isso significa rodar um script de forma headless dentro do contexto da place, não iniciar uma sessão completa de play.
 
 Então, mesmo quando o Lutest usar execução do lado do Roblox, isso deve ser entendido como "rodar código contra o contexto da place e as APIs da engine disponíveis ali", e não como "simular o jogo inteiro como se o Play tivesse começado".
+
+## Arquitetura
+
+O Lutest separa a superfície de escrita de testes do runtime que descobre e executa os testes. Em alto nível, o discovery encontra módulos que exigem o package configurado do Lutest; o runtime selecionado carrega cada módulo; os testes registrados durante esse carregamento se tornam uma suite implícita nomeada pelo caminho do módulo; e o runner central executa essa suite.
+
+É por isso que módulos descobertos podem continuar sendo módulos Luau normais, em vez de retornar objetos de suite explícitos.
+
+## Estabilidade
+
+O Lutest está pronto para uso em produção, mas sua API pública e configuração ainda evoluem. Fixe releases em toolchains reproduzíveis e revise as notas da release antes de atualizar, porque upgrades podem incluir mudanças incompatíveis.
+
+A API central de escrita, o modelo co-located, `lutest.toml`, o runtime local Lute, o runtime Roblox e o reporter são superfícies suportadas. Espere evolução na CLI, na profundidade da configuração e na cobertura de runtimes.
+
+## Direção
+
+O foco atual é tornar execuções locais e Roblox confiáveis, claras e úteis no desenvolvimento e em CI. O runtime Roblox já usa tarefas de sessão do Open Cloud Luau Execution; trabalhos futuros podem ampliar o suporte a runtimes voltados a Luau sem mudar o modelo central de escrita.

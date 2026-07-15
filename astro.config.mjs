@@ -8,6 +8,12 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Lutest',
+			logo: {
+				src: './assets/logo.png',
+				alt: 'Lutest',
+			},
+			favicon: '/logo.png',
+			customCss: ['./src/styles/lutest.css'],
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/lutest-dev/lutest' }],
 			locales: {
 				root: {
@@ -21,9 +27,9 @@ export default defineConfig({
 			},
 			sidebar: [
 				{
-					label: 'Getting Started',
+					label: 'Documentation',
 					translations: {
-						'pt-BR': 'Primeiros Passos',
+						'pt-BR': 'Documentação',
 					},
 					items: [
 						{
@@ -47,27 +53,12 @@ export default defineConfig({
 							},
 							slug: 'running-tests',
 						},
-					],
-				},
-				{
-					label: 'Guides',
-					translations: {
-						'pt-BR': 'Guias',
-					},
-					items: [
 						{
 							label: 'Writing Tests',
 							translations: {
 								'pt-BR': 'Escrevendo Testes',
 							},
 							slug: 'writing-tests',
-						},
-						{
-							label: 'Discovery',
-							translations: {
-								'pt-BR': 'Discovery',
-							},
-							slug: 'discovery',
 						},
 						{
 							label: 'Configuration',
@@ -79,13 +70,6 @@ export default defineConfig({
 						{
 							label: 'Roblox Runtime',
 							slug: 'roblox-runtime',
-						},
-						{
-							label: 'Concepts',
-							translations: {
-								'pt-BR': 'Conceitos',
-							},
-							slug: 'concepts',
 						},
 					],
 				},
@@ -118,32 +102,11 @@ export default defineConfig({
 					},
 					items: [
 						{
-							label: 'Architecture',
+							label: 'Project Model',
 							translations: {
-								'pt-BR': 'Arquitetura',
-							},
-							slug: 'architecture',
-						},
-						{
-							label: 'Philosophy',
-							translations: {
-								'pt-BR': 'Filosofia',
+								'pt-BR': 'Modelo do Projeto',
 							},
 							slug: 'philosophy',
-						},
-						{
-							label: 'Roadmap',
-							translations: {
-								'pt-BR': 'Roadmap',
-							},
-							slug: 'roadmap',
-						},
-						{
-							label: 'Stability',
-							translations: {
-								'pt-BR': 'Estabilidade',
-							},
-							slug: 'stability',
 						},
 					],
 				},

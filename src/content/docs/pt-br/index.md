@@ -25,13 +25,11 @@ return {
 }
 ```
 
-E uma execução desse módulo pode parecer assim:
+Uma execução bem-sucedida desse módulo é propositalmente compacta:
 
-```text
-$ lutest test .
+<div class="terminal-output" aria-label="Execução bem-sucedida do Lutest"><span class="terminal-prompt">$</span> lutest test .
 
-OK  1 total  1 pass  0 fail  0 skip  0 todo
-```
+<span class="terminal-success">+ 1 test passed</span></div>
 
 Quando você roda o Lutest, esse módulo é descoberto, carregado e tratado como uma suite.
 

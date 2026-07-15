@@ -1,0 +1,102 @@
+@layer starlight.overrides {
+	:root,
+	:root[data-theme='light'] {
+		--sl-color-white: #e8eaf0;
+		--sl-color-gray-1: #e8eaf0;
+		--sl-color-gray-2: #c5cad6;
+		--sl-color-gray-3: #8d97aa;
+		--sl-color-gray-4: #565b67;
+		--sl-color-gray-5: #2a2d35;
+		--sl-color-gray-6: #181a1f;
+		--sl-color-gray-7: #15171b;
+		--sl-color-black: #101114;
+
+		--sl-color-accent-low: #272a43;
+		--sl-color-accent: #8b9cff;
+		--sl-color-accent-high: #c6cfff;
+
+		--sl-color-orange-low: #423b24;
+		--sl-color-orange: #f6c85f;
+		--sl-color-orange-high: #ffe4a3;
+		--sl-color-green-low: #1c3e32;
+		--sl-color-green: #46d39a;
+		--sl-color-green-high: #a6f2cf;
+		--sl-color-purple-low: #392d4b;
+		--sl-color-purple: #c69cff;
+		--sl-color-purple-high: #e4cdfd;
+		--sl-color-red-low: #482936;
+		--sl-color-red: #ff718b;
+		--sl-color-red-high: #ffbfca;
+
+		--sl-color-text: var(--sl-color-gray-2);
+		--sl-color-text-accent: var(--sl-color-accent-high);
+		--sl-color-text-invert: var(--sl-color-black);
+		--sl-color-bg: var(--sl-color-black);
+		--sl-color-bg-nav: var(--sl-color-gray-6);
+		--sl-color-bg-sidebar: var(--sl-color-gray-6);
+		--sl-color-bg-inline-code: var(--sl-color-gray-6);
+		--sl-color-bg-accent: var(--sl-color-accent-high);
+		--sl-color-hairline-light: var(--sl-color-gray-5);
+		--sl-color-hairline: var(--sl-color-gray-6);
+		--sl-color-hairline-shade: var(--sl-color-black);
+		--sl-color-backdrop-overlay: rgb(12 13 16 / 66%);
+
+		--sl-font-mono: 'Cascadia Code', 'SFMono-Regular', Consolas, monospace;
+	}
+
+	body {
+		background: var(--sl-color-bg);
+	}
+
+	.expressive-code {
+		--ec-codeBg: #0c0d10;
+		--ec-codeFg: #e8eaf0;
+		--ec-uiFontFml: var(--__sl-font);
+		--ec-codeFontFml: var(--__sl-font-mono);
+		--ec-brdCol: #2a2d35;
+	}
+
+	.terminal-output {
+		margin: 1rem 0;
+		padding: 1rem;
+		overflow-x: auto;
+		border: 1px solid #2a2d35;
+		border-radius: 0.5rem;
+		background: #0c0d10;
+		color: #e8eaf0;
+		font-family: var(--__sl-font-mono);
+		font-size: var(--sl-text-code);
+		line-height: 1.65;
+		white-space: pre;
+	}
+
+	.terminal-prompt,
+	.terminal-accent {
+		color: #8b9cff;
+		font-weight: 700;
+	}
+
+	.terminal-success {
+		color: #46d39a;
+		font-weight: 700;
+	}
+
+	.terminal-failure {
+		color: #ff718b;
+		font-weight: 700;
+	}
+
+	.terminal-warning {
+		color: #f6c85f;
+		font-weight: 700;
+	}
+
+	.terminal-todo {
+		color: #c69cff;
+		font-weight: 700;
+	}
+
+	.terminal-muted {
+		color: #8d97aa;
+	}
+}

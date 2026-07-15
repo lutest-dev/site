@@ -4,6 +4,8 @@ title: Configuration
 
 Lutest reads `lutest.toml` from the project root.
 
+Pass `--config <path>` to `lutest test`, `lutest todo`, or `lutest doctor` to load a different configuration file. The explicit file must exist; Lutest does not fall back to the default configuration in that case.
+
 Runtime-specific discovery keeps local and Roblox test trees separate:
 
 ```toml
@@ -36,6 +38,8 @@ Most projects only need to care about three keys.
 `ignore` prunes paths you never want discovery to scan.
 
 `gitignore` is the switch that decides whether `.gitignore` should also be respected.
+
+When no configuration file exists, the local Lute runtime defaults to `require = "@lib"`, `roots = ["."]`, an empty ignore list, and `gitignore = true`. Configure `[discovery.lute]` explicitly once your project needs a different package path or search root.
 
 Here is the practical way to think about those settings:
 
