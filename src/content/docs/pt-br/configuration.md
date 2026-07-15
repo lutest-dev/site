@@ -4,7 +4,7 @@ title: Configuração
 
 O Lutest lê `lutest.toml` na raiz do projeto.
 
-Passe `--config <path>` para `lutest test`, `lutest todo` ou `lutest doctor` quando quiser carregar outro arquivo de configuração. O arquivo explícito precisa existir; nesse caso o Lutest não recorre à configuração padrão.
+Passe `--config <path>` para `lutest test`, `lutest todo` ou `lutest doctor` quando quiser carregar outro arquivo de configuração. O arquivo explícito precisa existir; nesse caso o Lutest não recorre à configuração padrão. As raízes de discovery dele são resolvidas em relação ao diretório do arquivo de configuração explícito.
 
 O discovery específico por runtime mantém separadas as árvores de testes locais e Roblox:
 

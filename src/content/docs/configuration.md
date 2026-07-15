@@ -4,7 +4,7 @@ title: Configuration
 
 Lutest reads `lutest.toml` from the project root.
 
-Pass `--config <path>` to `lutest test`, `lutest todo`, or `lutest doctor` to load a different configuration file. The explicit file must exist; Lutest does not fall back to the default configuration in that case.
+Pass `--config <path>` to `lutest test`, `lutest todo`, or `lutest doctor` to load a different configuration file. The explicit file must exist; Lutest does not fall back to the default configuration in that case. Its discovery roots are resolved relative to the explicit configuration file's directory.
 
 Runtime-specific discovery keeps local and Roblox test trees separate:
 

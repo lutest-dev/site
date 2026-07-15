@@ -25,3 +25,5 @@ O que importa é a chamada `require(...)`. O nome do arquivo não importa.
 Você ainda pode manter convenções de nome dentro do seu projeto, se quiser. Elas só não são o contrato principal.
 
 Se você vem do test runner embutido do `lute`, essa é a principal diferença. O `lute` descobre arquivos `.test.luau` e `.spec.luau`. O Lutest, em vez disso, descobre módulos normais que dependem do package path configurado do Lutest.
+
+Se o Lutest não conseguir interpretar um arquivo candidato durante o discovery, ele interrompe a execução e informa o arquivo e os detalhes da interpretação. Corrija o erro de sintaxe antes de rodar os testes novamente.

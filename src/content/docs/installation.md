@@ -55,7 +55,7 @@ Installing the Lutest CLI through a toolchain manager gives you the command-line
 
 That package is what the CLI uses to identify test modules during discovery.
 
-`pesde` and `wally` are not a good fit for Lutest in its current shape, so this project uses `lute`'s own package flow instead.
+Use Loom to install the package used by the local Lute runtime.
 
 Create a `loom.config.luau` in your project root:
 
@@ -67,7 +67,7 @@ return {
 		dependencies = {
 			lutest = {
 				name = "lutest",
-				rev = "v0.4.0",
+				rev = "v0.6.0",
 				sourceKind = "github",
 				source = "https://github.com/lutest-dev/lutest",
 			},
@@ -87,3 +87,20 @@ That creates `loom.lock.luau` and installs the dependency into `Packages/`.
 Without that package dependency in the project, Lutest has no configured test library path to look for, so your test modules will not be discovered the intended way.
 
 When you want to move to a newer release later, update `rev` to the new tag and run `lute pkg install` again.
+
+## Roblox with Wally
+
+For Roblox projects, install the test library through Wally. Add it to your `wally.toml`:
+
+```toml
+[dependencies]
+Lutest = "cayasde/lutest@0.6.0"
+```
+
+Then install the dependencies:
+
+```sh
+wally install
+```
+
+Place the generated package where your Roblox project can sync it into the game, and set `discovery.roblox.require` to its path relative to `game`.

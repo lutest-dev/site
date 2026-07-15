@@ -25,3 +25,5 @@ The `require(...)` call matters. The filename does not.
 You can still keep filename conventions in your own project if you like them. They just are not the main contract.
 
 If you are coming from `lute`'s built-in test runner, this is the biggest difference to keep in mind. `lute` discovers `.test.luau` and `.spec.luau` files. Lutest instead discovers ordinary modules that depend on the configured Lutest package path.
+
+If Lutest cannot parse a candidate file during discovery, it stops and reports the file and parsing details. Fix the syntax error before running the tests again.
