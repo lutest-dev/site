@@ -25,6 +25,7 @@ roots = ["src"]
 universe_id = 123456
 place_id = 123456
 version_id = 123456 # opcional, recomendado em CI
+rojo_project = "default.project.json" # opcional
 ```
 
 Na maioria dos projetos, só três chaves importam de verdade.
@@ -38,6 +39,8 @@ Na maioria dos projetos, só três chaves importam de verdade.
 `ignore` poda paths que você nunca quer que o discovery escaneie.
 
 `gitignore` é a chave que decide se `.gitignore` também deve ser respeitado.
+
+`roblox.rojo_project` aponta para um arquivo de projeto Rojo opcional, resolvido em relação ao `lutest.toml`. Quando definido, o Lutest executa `rojo sourcemap` e coloca os arquivos em seus caminhos de instância Roblox no bundle gerado. O Rojo precisa estar disponível no `PATH`; ambientes avançados podem substituir o executável com `LUTEST_ROJO_BIN`.
 
 Quando não existe arquivo de configuração, o runtime Lute local usa `require = "@lib"`, `roots = ["."]`, uma lista `ignore` vazia e `gitignore = true`. Configure `[discovery.lute]` explicitamente quando seu projeto precisar de outro package path ou raiz de busca.
 

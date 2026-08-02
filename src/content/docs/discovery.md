@@ -27,3 +27,7 @@ You can still keep filename conventions in your own project if you like them. Th
 If you are coming from `lute`'s built-in test runner, this is the biggest difference to keep in mind. `lute` discovers `.test.luau` and `.spec.luau` files. Lutest instead discovers ordinary modules that depend on the configured Lutest package path.
 
 If Lutest cannot parse a candidate file during discovery, it stops and reports the file and parsing details. Fix the syntax error before running the tests again.
+
+Lutest parses Luau syntax to identify the configured require. Text inside comments or strings does not create a false-positive suite. Discovery also follows readable file symbolic links found under a selected root.
+
+When a discovered module registers no tests, the run continues and reports a warning. This commonly means the configured require appears in the module but its test declarations were not reached.

@@ -61,6 +61,14 @@ Você pode usar a mesma opção com `todo` e com o runtime Roblox:
 lutest todo game --runtime roblox --dry-run
 ```
 
+Para inspecionar a hierarquia Roblox gerada, e não apenas a lista do discovery, use:
+
+```powershell
+lutest debug bundle game
+```
+
+O comando prepara e imprime o bundle localmente sem enviá-lo.
+
 ## Valide o ambiente
 
 Rode `doctor` antes de uma execução local ou de CI quando houver dúvida sobre o setup:
@@ -94,5 +102,7 @@ Se o discovery não encontrar nada, o Lutest sai com status de falha e imprime:
 <div class="terminal-output" aria-label="Nenhum arquivo de teste encontrado"><span class="terminal-failure">x No test files found</span>
 
 <span class="terminal-warning">! Add a test file or update discovery.roots in lutest.toml.</span></div>
+
+Se um módulo descoberto carregar mas não registrar testes, o Lutest continua a execução e mostra um aviso com o nome desse módulo.
 
 O reporter não mostra detalhes por arquivo em uma execução bem-sucedida. Quando um teste ou hook de ciclo de vida falha, ele adiciona abaixo do resumo o nome, o caminho do módulo e os detalhes do erro.

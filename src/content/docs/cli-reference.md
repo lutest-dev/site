@@ -22,6 +22,10 @@ lutest todo [paths...] [--runtime lute|roblox] [--config <path>] [--dry-run]
 lutest doctor [--config <path>]
 ```
 
+```powershell
+lutest debug bundle [paths...] [--config <path>]
+```
+
 ## Version
 
 ```powershell
@@ -66,13 +70,23 @@ The plan prints the resolved runtime, optional configuration path, and every dis
 
 For Lute, it checks that `[discovery.lute]` has both `require` and `roots`, and reports missing literal roots. For Roblox, it additionally checks `universe_id`, `place_id`, the Open Cloud API key, and whether Lutest can prepare its Roblox bundle. The command exits with `0` only when every configured runtime is ready.
 
+## Debug the Roblox bundle
+
+`lutest debug bundle` prints the Roblox instance tree that Lutest would build, including module classes and discovered suites. It performs discovery and bundle preparation locally but does not upload anything or start an Open Cloud session:
+
+```powershell
+lutest debug bundle game --config lutest.toml
+```
+
+The command always uses the Roblox runtime. It accepts `--config` and paths, but not `--dry-run` or another runtime.
+
 ## Setup
 
 `lutest setup` interactively creates an initial `lutest.toml`. It never overwrites an existing configuration and does not create a `.env` file or write API keys.
 
 ## Roblox progress in CI
 
-When Roblox output is not attached to a TTY, Lutest prints stable, versioned progress lines such as `lutest(roblox)@0.6.0 [1/5] preparing bundle`. This makes CI logs easier to identify and parse.
+When Roblox output is not attached to a TTY, Lutest prints stable, versioned progress lines such as `lutest(roblox)@0.7.1 [1/5] preparing bundle`. This makes CI logs easier to identify and parse.
 
 ## Exit behavior
 

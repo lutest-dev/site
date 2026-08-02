@@ -31,11 +31,26 @@ place_id = 123456
 version_id = 123456 # optional
 poll_interval_seconds = 2 # optional; defaults to 2
 timeout_seconds = 300 # optional; defaults to and cannot exceed 300
+rojo_project = "default.project.json" # optional
 ```
 
 `discovery.roblox.require` is relative to `game`. It must match the path used by test modules. The harness overlays this module and its Lutest dependencies with the CLI's bundled copy inside the session task; it does not change the published place or replace the project's normal package workflow.
 
 `roots` controls both discovery and bundle contents. Keep it focused on the Roblox source tree to avoid sending unrelated project files.
+
+### Preserve Rojo instance paths
+
+Set `roblox.rojo_project` when filesystem paths do not match the instances produced by Rojo. Lutest generates an absolute Rojo source map, maps discovered files into their instance paths, and includes mapped Luau sources needed by the bundle. The project path is relative to the configuration file.
+
+This option requires the `rojo` command on `PATH`. Set `LUTEST_ROJO_BIN` only when the executable has another name or location. An invalid project or failed source-map command is reported as a configuration error.
+
+Inspect the result before a remote run:
+
+```powershell
+lutest debug bundle game
+```
+
+The printed tree identifies `ModuleScript`, `Script`, and `LocalScript` instances and marks discovered suites. Nothing is uploaded.
 
 ## Set the API key
 
@@ -94,6 +109,8 @@ lutest todo game --runtime roblox
 ```
 
 Discovery recognizes either `game.ReplicatedStorage...` or a local alias created with `game:GetService`. A selected path narrows discovery, but a file still needs a static require of `discovery.roblox.require` to be treated as a suite.
+
+Discovery parses Luau syntax instead of searching raw source text, so requires inside comments or strings are not treated as suites. Readable file symbolic links under a configured root are followed and can also be mapped through a Rojo source map.
 
 ## Remote execution model
 

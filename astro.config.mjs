@@ -54,11 +54,22 @@ export default defineConfig({
 							slug: 'running-tests',
 						},
 						{
+							label: 'Discovery',
+							slug: 'discovery',
+						},
+						{
 							label: 'Writing Tests',
 							translations: {
 								'pt-BR': 'Escrevendo Testes',
 							},
 							slug: 'writing-tests',
+						},
+						{
+							label: 'Concepts',
+							translations: {
+								'pt-BR': 'Conceitos',
+							},
+							slug: 'concepts',
 						},
 						{
 							label: 'Configuration',
@@ -101,6 +112,13 @@ export default defineConfig({
 						'pt-BR': 'Projeto',
 					},
 					items: [
+						{
+							label: 'Releases',
+							translations: {
+								'pt-BR': 'Releases e novidades',
+							},
+							slug: 'releases',
+						},
 						{
 							label: 'Project Model',
 							translations: {

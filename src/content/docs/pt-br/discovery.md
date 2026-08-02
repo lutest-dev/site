@@ -27,3 +27,7 @@ Você ainda pode manter convenções de nome dentro do seu projeto, se quiser. E
 Se você vem do test runner embutido do `lute`, essa é a principal diferença. O `lute` descobre arquivos `.test.luau` e `.spec.luau`. O Lutest, em vez disso, descobre módulos normais que dependem do package path configurado do Lutest.
 
 Se o Lutest não conseguir interpretar um arquivo candidato durante o discovery, ele interrompe a execução e informa o arquivo e os detalhes da interpretação. Corrija o erro de sintaxe antes de rodar os testes novamente.
+
+O Lutest interpreta a sintaxe Luau para identificar o require configurado. Texto dentro de comentários ou strings não cria uma suite por falso positivo. O discovery também segue links simbólicos legíveis para arquivos encontrados dentro de uma raiz selecionada.
+
+Quando um módulo descoberto não registra testes, a execução continua e mostra um aviso. Isso geralmente significa que o require configurado aparece no módulo, mas suas declarações de teste não foram alcançadas.

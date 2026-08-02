@@ -18,6 +18,7 @@ t.before_all(fn)
 t.before_each(fn)
 t.after_each(fn)
 t.after_all(fn)
+t.is_running()
 ```
 
 ## `test(name, fn)`
@@ -75,6 +76,18 @@ end)
 ```
 
 Uma falha em `before_all` pula os testes executáveis da suite e é reportada como falha de hook. Uma falha em `before_each`, no corpo do teste ou em `after_each` falha aquele teste. Falhas em `after_all` são reportadas separadamente como falhas de hook.
+
+## `is_running()`
+
+Retorna `true` enquanto o Lutest coleta uma suite ou executa seus hooks e callbacks de teste. Isso é útil quando um módulo precisa proteger comportamento exclusivo de testes com uma verificação explícita do runtime:
+
+```luau
+if t.is_running() then
+	-- Setup exclusivo do Lutest
+end
+```
+
+Declarações de teste ficam inertes quando um módulo é exigido fora de uma coleta ativa do Lutest. Chamadas a `test`, `skip`, `only`, `todo`, `suite` e hooks de ciclo de vida não registram nem executam testes no código comum da aplicação.
 
 ## Assertions
 

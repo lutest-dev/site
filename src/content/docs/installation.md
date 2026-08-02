@@ -67,7 +67,7 @@ return {
 		dependencies = {
 			lutest = {
 				name = "lutest",
-				rev = "v0.6.0",
+				rev = "v0.7.1",
 				sourceKind = "github",
 				source = "https://github.com/lutest-dev/lutest",
 			},
@@ -94,7 +94,7 @@ For Roblox projects, install the test library through Wally. Add it to your `wal
 
 ```toml
 [dependencies]
-Lutest = "cayasde/lutest@0.6.0"
+Lutest = "cayasde/lutest@0.7.1"
 ```
 
 Then install the dependencies:
@@ -104,3 +104,5 @@ wally install
 ```
 
 Place the generated package where your Roblox project can sync it into the game, and set `discovery.roblox.require` to its path relative to `game`.
+
+Each GitHub Release also includes `Lib.rbxm` for projects that manage Roblox model assets directly. Keep the library version aligned with the installed CLI so the editor-facing API and the runtime bundle agree.

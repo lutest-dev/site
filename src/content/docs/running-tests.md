@@ -63,6 +63,14 @@ You can use the same option with `todo` and with the Roblox runtime:
 lutest todo game --runtime roblox --dry-run
 ```
 
+For the generated Roblox hierarchy rather than only the discovery list, use:
+
+```powershell
+lutest debug bundle game
+```
+
+This prepares and prints the bundle locally without uploading it.
+
 ## Validate the environment
 
 Run `doctor` before a local or CI run when setup is in doubt:
@@ -96,5 +104,7 @@ If discovery finds nothing, Lutest exits with a failure status and prints:
 <div class="terminal-output" aria-label="No test files found"><span class="terminal-failure">x No test files found</span>
 
 <span class="terminal-warning">! Add a test file or update discovery.roots in lutest.toml.</span></div>
+
+If a discovered module loads but registers no tests, Lutest keeps running and prints a warning naming that module.
 
 The reporter shows no per-file details for a passing run. When a test or lifecycle hook fails, it adds its name, module path, and error details below the summary.

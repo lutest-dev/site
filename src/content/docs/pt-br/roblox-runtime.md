@@ -31,11 +31,26 @@ place_id = 123456
 version_id = 123456 # opcional
 poll_interval_seconds = 2 # opcional; padrão 2
 timeout_seconds = 300 # opcional; padrão e máximo 300
+rojo_project = "default.project.json" # opcional
 ```
 
 `discovery.roblox.require` é relativo a `game` e precisa corresponder ao caminho usado pelos módulos de teste. O harness sobrepõe esse módulo e as dependências do Lutest com a cópia embutida pela CLI durante a tarefa de sessão; ele não altera a place publicada nem substitui o fluxo normal de packages.
 
 `roots` controla o discovery e o conteúdo do bundle. Mantenha-o focado na árvore de fontes Roblox para não enviar arquivos não relacionados.
+
+### Preserve os caminhos de instância do Rojo
+
+Defina `roblox.rojo_project` quando os caminhos do filesystem não corresponderem às instâncias produzidas pelo Rojo. O Lutest gera um sourcemap absoluto do Rojo, mapeia os arquivos descobertos para seus caminhos de instância e inclui fontes Luau mapeadas necessárias ao bundle. O caminho do projeto é relativo ao arquivo de configuração.
+
+Essa opção exige o comando `rojo` no `PATH`. Defina `LUTEST_ROJO_BIN` somente quando o executável tiver outro nome ou localização. Um projeto inválido ou uma falha ao gerar o sourcemap é reportado como erro de configuração.
+
+Inspecione o resultado antes de uma execução remota:
+
+```powershell
+lutest debug bundle game
+```
+
+A árvore impressa identifica instâncias `ModuleScript`, `Script` e `LocalScript` e marca as suites descobertas. Nada é enviado.
 
 ## Defina a chave de API
 
@@ -90,6 +105,8 @@ lutest todo game --runtime roblox
 ```
 
 O discovery reconhece `game.ReplicatedStorage...` e aliases locais criados com `game:GetService`. Um caminho selecionado restringe o discovery, mas o arquivo ainda precisa de um require estático de `discovery.roblox.require` para ser uma suite.
+
+O discovery interpreta a sintaxe Luau em vez de procurar texto bruto no código, então requires dentro de comentários ou strings não são tratados como suites. Links simbólicos legíveis para arquivos dentro de uma raiz configurada são seguidos e também podem ser mapeados por um sourcemap do Rojo.
 
 ## Modelo de execução remota
 

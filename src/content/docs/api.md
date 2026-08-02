@@ -18,6 +18,7 @@ t.before_all(fn)
 t.before_each(fn)
 t.after_each(fn)
 t.after_all(fn)
+t.is_running()
 ```
 
 ## `test(name, fn)`
@@ -75,6 +76,18 @@ end)
 ```
 
 `before_all` failure skips the suite's runnable tests and is reported as a hook failure. A `before_each`, test body, or `after_each` failure fails that test. `after_all` failures are reported separately as hook failures.
+
+## `is_running()`
+
+Returns `true` while Lutest is collecting a suite or running its hooks and test callbacks. It is useful when a module needs to keep test-only behavior behind an explicit runtime check:
+
+```luau
+if t.is_running() then
+	-- Lutest-only setup
+end
+```
+
+Test declarations are inert when a module is required outside an active Lutest collection. Calls to `test`, `skip`, `only`, `todo`, `suite`, and lifecycle hooks do not register or execute tests in ordinary application code.
 
 ## Assertions
 
